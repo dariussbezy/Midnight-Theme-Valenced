@@ -1,6 +1,6 @@
 # Midnight Mobile
 
-> **Development moved:** all plugins and themes are now maintained in [Valenced Plugins & Themes](https://github.com/dariussbezy/dariussbezy-Valenced-Plugins-Themes). Use the [single repository URL](https://raw.githubusercontent.com/dariussbezy/dariussbezy-Valenced-Plugins-Themes/main/index.json) for installation and updates. This repository remains available for historical links.
+> Valenced test repository. The combined catalog is available from [dariussbezy's Plugins](https://github.com/dariussbezy/dariussbezy-Plugins).
 
 The Midnight desktop theme, adapted for **Valenced on Discord mobile**. The original desktop CSS remains available in this repository.
 
@@ -9,7 +9,7 @@ The Midnight desktop theme, adapted for **Valenced on Discord mobile**. The orig
 Add this URL in **Valenced Settings → Plugins → Advanced → Repository URL**:
 
 ```text
-https://raw.githubusercontent.com/dariussbezy/dariussbezy-Valenced-Plugins-Themes/main/index.json
+https://raw.githubusercontent.com/dariussbezy/Midnight-Theme-Valenced/main/index.json
 ```
 
 Install **Midnight Mobile** from the **beta** channel, then restart Discord. Keep Valenced's community repository enabled so the Themes dependencies can be installed.
@@ -18,22 +18,22 @@ In **Valenced Settings → Themes**:
 
 1. Under **Color themes**, choose **Midnight → Midnight (Auto)**.
 2. Under **Fonts**, choose **Midnight Figtree** for the sans-serif font.
-3. Under **Icons**, choose **Midnight Moon**.
+3. The navigation moon is included when Midnight is active with default Discord icons. Optionally choose **Midnight Moon** under **Icons** for the additional Home/Clyde asset replacements.
 4. Restart Discord after changing fonts or icons.
 
-You can also install [the beta ZIP](MT/Midnight-Mobile-Valenced-1.0.0-beta.zip) using **Install from file**.
+You can also install [the beta ZIP](pool/dariuss.midnight-theme@1.0.0-beta.zip) using **Install from file**.
 
 ## Features
 
-- The original blue accents, navy palette, text colors, status colors and translucent surfaces.
-- The original wallpaper, bundled locally with the theme.
+- The original blue accents, navy palette, text colors and status colors. Native controls keep opaque base colors; Valenced handles translucency on supported gradient surfaces.
+- The original wallpaper, bundled locally and softened with a subtle background blur.
 - Dark and light palettes following Discord's appearance, including automatic appearance when enabled in Discord.
 - Figtree with normal, medium, semibold, bold, extra bold and italic variants. Code blocks keep Discord's monospace font.
-- The original Font Awesome moon replaces the Clyde logo where Discord uses that image asset.
-- Optional **Enhanced layout** adds rounded, bordered frames and spacing to supported channel lists, channel headers and the message composer. It applies only while Midnight is the selected color theme. Restart after changing this option.
+- The original Font Awesome moon appears in the Home/DMs navigation button. Other chat icons remain unchanged. Custom icon packs are respected; the optional Midnight Moon pack also replaces Home/Clyde assets.
+- Optional **Rounded surfaces** gives the channel list, channel header and message composer proportionate corner radii while preserving their layout. It applies only while Midnight is the selected color theme. Restart after changing this option.
 - Native Discord settings controls. No recurring network requests, timers or screenshot-based blur.
 
-Mobile uses React Native, so desktop CSS cannot be installed directly. Window controls, mouse hover effects and the desktop multi-column arrangement do not transfer to a phone. Background blur uses Valenced's background API; it is not a recreation of CSS blur on every panel. Additional layout styling targets Discord 352.6 and skips components it cannot identify.
+Mobile uses React Native, so desktop CSS cannot be installed directly. Window controls, mouse hover effects and the desktop multi-column arrangement do not transfer to a phone. Translucency uses Valenced's background API. Valenced applies the blur to the wallpaper layer, keeping text and controls sharp. Surface styling targets Discord 352.6 and skips components it cannot identify.
 
 To return to Discord's appearance, choose the default colors, font and icons in Themes, or disable Midnight Mobile and restart.
 
@@ -44,10 +44,6 @@ To return to Discord's appearance, choose the default colors, font and icons in 
 - [Font Awesome](https://fontawesome.com/license/free): original moon icon, converted to PNG for mobile. Icon attribution and license are included in the asset notices.
 - dariuss: mobile adaptation.
 
-Mobile sources are in [`themes/MT`](themes/MT); installation files remain in [`MT`](MT). Version: **1.0.0-beta**. Android device testing and iOS device testing are still pending; local tests cover registration, palette values, layout isolation and packaging.
+Mobile sources are in [`js`](themes/MT/js); installation files are in the repository [pool](pool). Version: **1.0.0-beta**. Android device testing and iOS device testing are still pending; local tests cover registration, palette values, React rendering, Yoga layout geometry, icon isolation and packaging.
 
-## Repository structure
-
-Sources use the [official Valenced plugin template](https://github.com/Valenced/valenced-plugin-template/tree/9a4f9187137a75d86fe552d0e594889a6e6fd7e5). The implementation is in [`themes/MT/js`](themes/MT/js), with shared configuration and the official plugin CLI at the repository root. `./gradlew packageAllPlugins` packages the plugin; `npm run publish:local` prepares the pool and both repository indexes. The `MT/index.json` installation URL remains supported. Artifacts stay on `main` and the beta channel.
-
-Install development dependencies with `bun install --frozen-lockfile` before running the root scripts. The compiler and SDK revisions are pinned in `package.json`.
+After updating, reselect **Midnight (Auto)** and restart Discord completely so cached native colors are refreshed. If you use the optional **Midnight Moon** icon pack, reselect it once to refresh its asset mappings.
