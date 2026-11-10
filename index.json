@@ -1,0 +1,40 @@
+{
+  "format": 1,
+  "name": "Midnight Mobile",
+  "description": "Midnight theme for Valenced on Discord mobile.",
+  "plugins": {
+    "dariuss.midnight-theme": {
+      "name": "Midnight Mobile",
+      "description": "Midnight for Discord mobile: navy panels, blue accents, Figtree and the moon icon.",
+      "author": "dariuss",
+      "contributors": [
+        "refact0r (original Midnight theme)",
+        "Font Awesome (moon icon)",
+        "Erik Kennedy (Figtree)"
+      ],
+      "icon": "MoonIcon",
+      "channels": {
+        "beta": "1.0.0-beta"
+      },
+      "versions": {
+        "1.0.0-beta": {
+          "url": "https://raw.githubusercontent.com/dariussbezy/Midnight-Theme-Valenced/refs/heads/main/MT/Midnight-Mobile-Valenced-1.0.0-beta.zip",
+          "sha256": "bcb1482cc87f269df9960aff36cbd303b3a2c6644f5ce785de1731065645906a",
+          "size": 1925553,
+          "dependencies": {
+            "valenced.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": ">=352.6 <352.7"
+            },
+            "valenced.api.themes": {
+              "version": ">=1.0.1 <2"
+            },
+            "valenced.settings.themes": {}
+          }
+        }
+      }
+    }
+  }
+}
