@@ -66,11 +66,11 @@ function Frame({ original, kind }: { original: React.ReactElement; kind: Kind })
     () => store?.theme === "light", () => false,
   );
   if (!enabled) return original;
-  return <View style={[
+  return React.createElement(View, { style: [
     { borderWidth: 1, borderRadius: 16, overflow: kind === "composer" ? "visible" : "hidden", borderColor: light ? "#5973A021" : "#6888E424", marginHorizontal: 12 },
     kind === "channels" ? { flex: 1, minHeight: 0, marginVertical: 6 } :
     kind === "header" ? { marginTop: 6, marginBottom: 6 } : { marginVertical: 4 },
-  ]}>{original}</View>;
+  ] }, original);
 }
 
 export function startLayout(enabled: boolean, report: (error: unknown) => void): () => void {

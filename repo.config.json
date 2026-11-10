@@ -1,0 +1,15 @@
+{
+  "name": "Midnight Mobile",
+  "description": "Midnight for Discord mobile: navy panels, blue accents, Figtree and the moon icon.",
+  "channels": {
+    "dariuss.midnight-theme": {
+      "beta": "1.0.0-beta"
+    }
+  },
+  "distribution": {
+    "source": "themes/MT",
+    "directory": "MT",
+    "archive": "Midnight-Mobile-Valenced-1.0.0-beta.zip",
+    "repository": "dariussbezy/Midnight-Theme-Valenced"
+  }
+}

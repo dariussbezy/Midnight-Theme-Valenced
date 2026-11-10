@@ -42,4 +42,10 @@ To return to Discord's appearance, choose the default colors, font and icons in 
 - [Font Awesome](https://fontawesome.com/license/free): original moon icon, converted to PNG for mobile. Icon attribution and license are included in the asset notices.
 - dariuss: mobile adaptation.
 
-Mobile files are in [`MT`](MT). Version: **1.0.0-beta**. Android device testing and iOS device testing are still pending; local tests cover registration, palette values, layout isolation and packaging.
+Mobile sources are in [`themes/MT`](themes/MT); installation files remain in [`MT`](MT). Version: **1.0.0-beta**. Android device testing and iOS device testing are still pending; local tests cover registration, palette values, layout isolation and packaging.
+
+## Repository structure
+
+Sources use the [official Valenced plugin template](https://github.com/Valenced/valenced-plugin-template/tree/9a4f9187137a75d86fe552d0e594889a6e6fd7e5). The implementation is in [`themes/MT/js`](themes/MT/js), with shared configuration and the official plugin CLI at the repository root. `./gradlew packageAllPlugins` packages the plugin; `npm run publish:local` prepares the pool and both repository indexes. The `MT/index.json` installation URL remains supported. Artifacts stay on `main` and the beta channel.
+
+Install development dependencies with `bun install --frozen-lockfile` before running the root scripts. The compiler and SDK revisions are pinned in `package.json`.

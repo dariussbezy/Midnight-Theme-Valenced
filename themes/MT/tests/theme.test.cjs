@@ -7,15 +7,15 @@ const esbuild=require('esbuild');
 const React=require('react');
 const base=path.resolve(__dirname,'..');
 function load(file,modules={}) {
- const source=esbuild.buildSync({entryPoints:[path.join(base,file)],bundle:true,write:false,format:'cjs',platform:'node',external:['react','react-native','@valenced/*'],jsx:'automatic'}).outputFiles[0].text;
+ const source=esbuild.buildSync({entryPoints:[path.join(base,'js',file)],bundle:true,write:false,format:'cjs',platform:'node',external:['react','react-native','@valenced/*'],jsx:'automatic'}).outputFiles[0].text;
  const module={exports:{}};
  vm.runInNewContext(source,{module,exports:module.exports,require:(id)=>id==='react'?React:id==='react/jsx-runtime'?require('react/jsx-runtime'):modules[id],console,Symbol,Set,Map,WeakSet,Promise});
  return module.exports;
 }
-const exists=fs.existsSync(path.join(base,'palette.json'));
+const exists=fs.existsSync(path.join(base,'js/palette.json'));
 test('mobile palette exists and contains dark, darker, midnight and light',()=>{
  assert.ok(exists,'Missing mobile palette');
- const p=JSON.parse(fs.readFileSync(path.join(base,'palette.json')));
+ const p=JSON.parse(fs.readFileSync(path.join(base,'js/palette.json')));
  for(const theme of ['dark','darker','midnight','light']) {
   assert.ok(Object.keys(p.semantic[theme]).length>=45);
   for(const c of Object.values(p.semantic[theme]))assert.match(c,/^#[a-f0-9]{6}([a-f0-9]{2})?$/i);
@@ -57,15 +57,15 @@ module.exports={load,base};
 test('published ZIP and beta index agree, and include no development files',()=>{
  const {unzipSync,strFromU8}=require('fflate');
  const {createHash}=require('node:crypto');
- const archive=fs.readFileSync(path.join(base,'Midnight-Mobile-Valenced-1.0.0-beta.zip'));
+ const archive=fs.readFileSync(path.join(base,'../../MT/Midnight-Mobile-Valenced-1.0.0-beta.zip'));
  const files=unzipSync(archive);
  const manifest=JSON.parse(strFromU8(files['manifest.json']));
- const index=JSON.parse(fs.readFileSync(path.join(base,'index.json')));
+ const index=JSON.parse(fs.readFileSync(path.join(base,'../../index.json')));
  const entry=index.plugins[manifest.id];
  assert.deepEqual(entry.channels,{beta:'1.0.0-beta'});
  assert.equal(entry.versions[manifest.version].size,archive.length);
  assert.equal(entry.versions[manifest.version].sha256,createHash('sha256').update(archive).digest('hex'));
- assert.deepEqual(fs.readFileSync(path.join(base,'../index.json')),fs.readFileSync(path.join(base,'index.json')));
+ assert.deepEqual(fs.readFileSync(path.join(base,'../../MT/index.json')),fs.readFileSync(path.join(base,'../../index.json')));
  for(const name of ['assets/wallpaper.png','assets/moon.png','assets/Figtree.ttf','assets/Figtree-Italic.ttf','assets/Figtree-OFL.txt','assets/NOTICE.txt'])assert.ok(files[name]?.length,name);
  assert.ok(Object.keys(files).every(name=>name==='manifest.json'||name==='index.js'||name.startsWith('assets/')));
  assert.equal(manifest.version,'1.0.0-beta');
