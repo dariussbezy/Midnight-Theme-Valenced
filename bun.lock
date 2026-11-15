@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "@dariuss/midnight-theme",
+      "name": "@dariuss/valenced-plugins",
       "dependencies": {
         "@valenced/plugin-cli": "git+https://github.com/Valenced/valenced-plugin-cli.git#9ea9f9bfc91319e2b18c6b1c9ac0b993f8600c1d",
         "@valenced/themes-api": "git+https://github.com/Valenced/valenced-themes-types.git#f329610cc80004417564c8058249b957631b32b0",

@@ -1,19 +1,12 @@
 {
-  "name": "@dariuss/midnight-theme",
-  "version": "1.0.2-beta",
+  "name": "@dariuss/valenced-plugins",
+  "version": "1.0.0-beta",
   "private": true,
   "type": "module",
   "scripts": {
     "build": "valenced-plugin build",
-    "build:dev": "valenced-plugin build --dev",
-    "generate-index": "valenced-plugin generate-index",
-    "plan-releases": "valenced-plugin plan-releases --plugins-dir themes",
-    "serve": "valenced-plugin serve",
     "lint": "biome check",
-    "lint:types": "tsc -p themes/MT/tsconfig.json --noEmit",
-    "test": "node --test tests/*.test.cjs themes/MT/tests/*.test.cjs",
-    "publish:local": "node scripts/publish.mjs",
-    "pretest": "npm run build -- --plugins-dir themes"
+    "lint:types": "tsc -p themes/MT/tsconfig.json --noEmit"
   },
   "dependencies": {
     "@valenced/plugin-cli": "git+https://github.com/Valenced/valenced-plugin-cli.git#9ea9f9bfc91319e2b18c6b1c9ac0b993f8600c1d",
